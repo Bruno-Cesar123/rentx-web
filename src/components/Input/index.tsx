@@ -2,9 +2,6 @@ import { InputHTMLAttributes } from 'react';
 import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  id: string;
-  name: string;
-  type: string;
   label: string;
 }
 

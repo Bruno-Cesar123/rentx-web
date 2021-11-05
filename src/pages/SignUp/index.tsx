@@ -5,18 +5,29 @@ import { Input } from '../../components/Input';
 
 import { Container, Form } from './styles';
 
-export function SignIn() {
+export function SignUp() {
   return (
     <Container>
       <img src={logoImg} alt="rentx" />
 
       <Form>
-        <h1>Faça seu login</h1>
+        <h1>Faça seu cadastro</h1>
+
+        <Input
+          label="Nome"
+          id="name"
+          name="name"
+        />
+
+        <Input
+          label="Licença do carro"
+          id="driver_license"
+          name="driver_license"
+        />
 
         <Input
           label="E-mail"
           id="email"
-          type="text"
           name="email"
         />
 
@@ -27,12 +38,8 @@ export function SignIn() {
           name="password"
         />
 
-        <div>
-          <a href="/">Esqueceu a senha?</a>
-          <Link to="/signup">Crie sua conta</Link>
-        </div>
-
-        <button type="submit">Entrar</button>
+        <button type="submit">Cadastrar</button>
+        <Link to="/signin">Retornar ao login</Link>
 
       </Form>
     </Container>

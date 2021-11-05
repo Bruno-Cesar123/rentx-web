@@ -25,23 +25,6 @@ export const Form = styled.form`
     margin-bottom: 16px;
   }
 
-
-  div {
-    margin-top: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-    a {
-      color: #404040;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
   button {
     margin-top: 16px;
     width: 390px;
@@ -53,6 +36,26 @@ export const Form = styled.form`
     color: #FFFFFF;
     font-size: 18px;
     letter-spacing: 2px;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+
+  a {
+    display: block;
+    height: 45px;
+    background: #404040;
+    color: #FFFFFF;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    margin-top: 16px;
+
     transition: filter 0.2s;
 
     &:hover {
