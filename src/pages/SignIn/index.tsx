@@ -8,13 +8,14 @@ export function SignIn() {
       <img src={logoImg} alt="rentx" />
 
       <Form>
-        <h1>Sign In</h1>
+        <h1>Faça seu login</h1>
 
         <label htmlFor="email">E-mail:</label>
         <input
           type="text"
           name="email"
           aria-label='email'
+          placeholder="Digite seu e-mail"
           id='email'
           autoFocus
         />
@@ -23,6 +24,7 @@ export function SignIn() {
         <input
           type="password"
           name="password"
+          placeholder="Digite sua senha"
           aria-label='password'
           id='password'
         />

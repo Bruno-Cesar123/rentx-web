@@ -11,7 +11,6 @@ export const Container = styled.main`
   background-size: cover;
   -o-object-fit: cover;
   object-fit: cover;
-  /* width: 100%; */
 `;
 
 export const Content = styled.section`
@@ -19,7 +18,7 @@ export const Content = styled.section`
   margin: 0 auto;
 
   div {
-    margin-top: 220px;
+    margin-top: 140px;
     width: 576px;
     padding: 0 8px;
 
@@ -63,6 +62,28 @@ export const Content = styled.section`
 
 export const Header = styled.header`
   padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+      width: 90px;
+      height: 54px;
+      background: #FF1010;
+      color: #ffffff;
+      font-size: 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.9);
+      }
+    }
 
   @media(max-width: 425px) {
     display: flex;

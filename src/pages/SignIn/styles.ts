@@ -8,8 +8,8 @@ export const Container = styled.main`
   justify-content: center;
 
   img {
-    width: 284px;
-    height: 88px;
+    width: 240px;
+    height: 80px;
     margin-top: 80px;
   }
 `;
@@ -35,7 +35,6 @@ export const Form = styled.form`
     width: 390px;
     height: 45px;
     padding: 16px;
-    font-size: 18px;
     color: #404040;
 
     background: #FAF9F9;
@@ -68,6 +67,12 @@ export const Form = styled.form`
     cursor: pointer;
     border: none;
     color: #FFFFFF;
-    font-size: 24px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
   }
 `;

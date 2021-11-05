@@ -8,6 +8,7 @@ export function Landing() {
       <Content>
         <Header>
           <img src={logoImg} alt="rentex" />
+          <a href="/">Entrar</a>
         </Header>
 
         <div>
