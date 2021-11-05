@@ -1,6 +1,23 @@
+import { InputHTMLAttributes } from 'react';
+import { Container } from './styles';
 
-export function Button() {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  name: string;
+  type: string;
+  label: string;
+}
+
+export function Input({ id, name, type, label }: InputProps) {
   return (
-    <h1>button</h1>
+    <Container>
+      <input
+        id={id}
+        name={name} 
+        type={type}
+        placeholder="*"
+      />
+      <label htmlFor={label}>{label}</label>
+    </Container>
   )
 }

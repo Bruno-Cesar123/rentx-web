@@ -1,6 +1,7 @@
 
 import { Container, Form } from './styles';
 import logoImg from '../../assets/logo.svg';
+import { Input } from '../../components/Input';
 
 export function SignIn() {
   return (
@@ -10,23 +11,18 @@ export function SignIn() {
       <Form>
         <h1>Faça seu login</h1>
 
-        <label htmlFor="email">E-mail:</label>
-        <input
+        <Input
+          label="E-mail"
+          id="email"
           type="text"
           name="email"
-          aria-label='email'
-          placeholder="Digite seu e-mail"
-          id='email'
-          autoFocus
         />
 
-        <label htmlFor="password">Password:</label>
-        <input
+        <Input
+          label="Password"
+          id="password"
           type="password"
           name="password"
-          placeholder="Digite sua senha"
-          aria-label='password'
-          id='password'
         />
 
         <div>

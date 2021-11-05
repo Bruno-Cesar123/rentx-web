@@ -22,28 +22,12 @@ export const Form = styled.form`
   h1 {
     font-size: 40px;
     font-weight: 400;
+    margin-bottom: 16px;
   }
 
-  label {
-    display: flex;
-    justify-content: start;
-    margin-top: 16px;
-  }
-
-  input {
-    margin-top: 12px;
-    width: 390px;
-    height: 45px;
-    padding: 16px;
-    color: #404040;
-
-    background: #FAF9F9;
-    border: 1px solid #404040;
-    border-radius: 16px;
-  }
 
   div {
-    margin-top: 16px;
+    margin-top: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -73,6 +57,20 @@ export const Form = styled.form`
 
     &:hover {
       filter: brightness(0.9);
+    }
+  }
+
+  @media(max-width: 430px) {
+    padding: 16px;
+
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
     }
   }
 `;
