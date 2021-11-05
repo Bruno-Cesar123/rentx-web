@@ -42,6 +42,12 @@ export const Content = styled.section`
       align-items: center;
       justify-content: center;
       border-radius: 16px;
+
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.9);
+      }
     }
 
     @media(max-width: 576px) {

@@ -1,11 +1,13 @@
 import CreateGlobalStyle from './styles/global';
 
-import { Landing } from './pages/Landing';
+import { SignIn } from './pages/SignIn';
+
+// import { Landing } from './pages/Landing';
 
 export function App() {
   return (
     <>
-      <Landing />
+      <SignIn />
       <CreateGlobalStyle />
     </>
   )
