@@ -1,42 +1,83 @@
+import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-
+import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
 import logoImg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
 
 import { Container, Form } from './styles';
 
+interface SignUpFormData {
+  name: string;
+  email: string;
+  driver_license: string;
+  password: string;
+}
+
+const validationSchema = yup.object({
+  name: yup.string().required('* Nome obrigatório').trim(),
+  driver_license: yup.string().required('* Licença obrigatória').trim(),
+  email: yup.string()
+    .email('* Digite um email válido')
+    .required('* E-mail obrigatório').trim(),
+  password: yup.string()
+    .required('* Senha obrigatória')
+    .min(6, '* No mínimo 6 dígitos').trim(),
+});
+
 export function SignUp() {
+  const { register, handleSubmit, formState: { errors } } = useForm<SignUpFormData>({
+    resolver: yupResolver(validationSchema)
+  })
+
+  const onSubmitForm = useCallback((data: SignUpFormData) => {
+    console.log(data)
+  }, []);
+
   return (
     <Container>
       <img src={logoImg} alt="rentx" />
 
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmitForm)}>
         <h1>Faça seu cadastro</h1>
 
         <Input
           label="Nome"
           id="name"
-          name="name"
+          aria-describedby="Nome"
+          register={register}
+          className={errors.name?.message ? 'input-error' : ''} 
         />
+        <p>{errors.name?.message}</p>
 
         <Input
-          label="Licença do carro"
+          label="Licença de Motorista"
           id="driver_license"
-          name="driver_license"
+          aria-describedby="Licença do motorista"
+          register={register}
+          className={errors.driver_license?.message ? 'input-error' : ''}  
         />
+        <p>{errors.driver_license?.message}</p>
 
         <Input
           label="E-mail"
           id="email"
-          name="email"
+          aria-describedby="E-mail"
+          register={register}
+          className={errors.email?.message ? 'input-error' : ''}        
         />
+        <p>{errors.email?.message}</p>
 
         <Input
-          label="Password"
+          label="Senha"
           id="password"
+          aria-describedby="Senha"
           type="password"
-          name="password"
+          register={register}
+          className={errors.password?.message ? 'input-error' : ''}
         />
+        <p>{errors.password?.message}</p>
 
         <button type="submit">Cadastrar</button>
         <Link to="/signin">Retornar ao login</Link>

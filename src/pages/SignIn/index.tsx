@@ -17,10 +17,10 @@ interface SignInFormData {
 const validationSchema = yup.object({
   email: yup.string()
     .email('* Digite um email válido')
-    .required('* E-mail obrigatório'),
+    .required('* E-mail obrigatório').trim(),
   password: yup.string()
     .required('* Senha obrigatória')
-    .min(6, '* No mínimo 6 dígitos'),
+    .min(6, '* No mínimo 6 dígitos').trim(),
 });
 
 export function SignIn() {
@@ -45,8 +45,7 @@ export function SignIn() {
           type="text"
           aria-describedby="E-mail"
           register={register}
-          className={errors.email?.message ? 'input-error' : ''}
-          
+          className={errors.email?.message ? 'input-error' : ''}        
         />
         <p>{errors.email?.message}</p>
 

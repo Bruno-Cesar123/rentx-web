@@ -2,15 +2,17 @@ import { InputHTMLAttributes } from 'react';
 import { UseFormRegister, Path } from 'react-hook-form';
 import { Container } from './styles';
 
-interface ITeste {
+interface IFormValues {
   email: string;
-  password: string; 
+  password: string;
+  name: string;
+  driver_license: string
 }
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  id: Path<ITeste>;
-  register: UseFormRegister<ITeste>;
+  id: Path<IFormValues>;
+  register: UseFormRegister<IFormValues>;
 }
 
 export function Input({ label, id, register,...rest }: InputProps) {
