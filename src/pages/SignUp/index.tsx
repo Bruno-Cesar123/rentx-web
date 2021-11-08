@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FiArrowLeft } from 'react-icons/fi';
 import logoImg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
 
@@ -43,44 +44,44 @@ export function SignUp() {
         <h1>Faça seu cadastro</h1>
 
         <Input
+          inputError={Boolean(errors.name)}
           label="Nome"
           id="name"
           aria-describedby="Nome"
-          register={register}
-          className={errors.name?.message ? 'input-error' : ''} 
+          register={register} 
         />
         <p>{errors.name?.message}</p>
 
         <Input
+          inputError={Boolean(errors.driver_license)}
           label="Licença de Motorista"
           id="driver_license"
           aria-describedby="Licença do motorista"
           register={register}
-          className={errors.driver_license?.message ? 'input-error' : ''}  
         />
         <p>{errors.driver_license?.message}</p>
 
         <Input
+          inputError={Boolean(errors.email)}
           label="E-mail"
           id="email"
           aria-describedby="E-mail"
-          register={register}
-          className={errors.email?.message ? 'input-error' : ''}        
+          register={register}      
         />
         <p>{errors.email?.message}</p>
 
         <Input
+          inputError={Boolean(errors.password)}
           label="Senha"
           id="password"
           aria-describedby="Senha"
           type="password"
           register={register}
-          className={errors.password?.message ? 'input-error' : ''}
         />
         <p>{errors.password?.message}</p>
 
         <button type="submit">Cadastrar</button>
-        <Link to="/signin">Retornar ao login</Link>
+        <Link to="/signin"> <FiArrowLeft size={18} /> <span>Retornar ao login</span></Link>
 
       </Form>
     </Container>

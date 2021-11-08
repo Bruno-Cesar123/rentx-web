@@ -6,18 +6,19 @@ interface IFormValues {
   email: string;
   password: string;
   name: string;
-  driver_license: string
+  driver_license: string;
 }
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: Path<IFormValues>;
   register: UseFormRegister<IFormValues>;
+  inputError?: boolean;
 }
 
-export function Input({ label, id, register,...rest }: InputProps) {
+export function Input({ label, id, register, inputError, ...rest }: InputProps) {
   return (
-    <Container>
+    <Container invalid={!!inputError}>
       <input
         placeholder="*"
         id={id}

@@ -28,19 +28,7 @@ export const Form = styled.form`
   p {
     margin-top: 12px;
     color: #ff4040;
-    text-align: left
-  }
-
-  .input-error + label {
-    color: #ff4040;
-  }
-
-  .input-error {
-    border-color: #ff4040;
-    
-    &:focus {
-      border: 2px solid #ff4040;
-    }
+    text-align: left;
   }
 
   button {
@@ -67,6 +55,8 @@ export const Form = styled.form`
     background: #404040;
     color: #FFFFFF;
     text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 2px;
 
     display: flex;
     align-items: center;
@@ -78,6 +68,10 @@ export const Form = styled.form`
 
     &:hover {
       filter: brightness(0.9);
+    }
+
+    svg {
+      margin-right: 8px;
     }
   }
 

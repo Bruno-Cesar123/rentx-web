@@ -40,22 +40,21 @@ export function SignIn() {
         <h1>Faça seu login</h1>
 
         <Input
+          inputError={Boolean(errors.email)}
           label="E-mail"
           id="email"
-          type="text"
           aria-describedby="E-mail"
-          register={register}
-          className={errors.email?.message ? 'input-error' : ''}        
+          register={register}      
         />
         <p>{errors.email?.message}</p>
 
         <Input
+          inputError={Boolean(errors.password)}
           label="Senha"
           id="password"
           aria-describedby="Senha"
           type="password"
           register={register}
-          className={errors.password?.message ? 'input-error' : ''}
         />
         <p>{errors.password?.message}</p>
 

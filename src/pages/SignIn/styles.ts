@@ -28,21 +28,8 @@ export const Form = styled.form`
   p {
     margin-top: 12px;
     color: #ff4040;
-    text-align: left
+    text-align: left;
   }
-
-  .input-error + label {
-    color: #ff4040;
-  }
-
-  .input-error {
-    border-color: #ff4040;
-    
-    &:focus {
-      border: 2px solid #ff4040;
-    }
-  }
-
 
   div {
     margin-top: 24px;
