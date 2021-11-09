@@ -10,6 +10,7 @@ import logoImg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
 
 import { Container, Form } from './styles';
+import { api } from '../../services/api';
 
 interface SignUpFormData {
   name: string;
@@ -36,8 +37,11 @@ export function SignUp() {
 
   const navigate = useNavigate();
 
-  const onSubmitForm = useCallback((data: SignUpFormData) => {
+  const onSubmitForm = useCallback( async (data: SignUpFormData) => {
     try {
+
+      await api.post('/users', data);
+
       toast.success('Cadastro realizado com sucesso');
 
       navigate('/signin');
