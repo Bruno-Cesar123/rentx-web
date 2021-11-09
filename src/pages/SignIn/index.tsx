@@ -1,10 +1,10 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/AuthContext';
 
 import logoImg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
@@ -26,9 +26,7 @@ const validationSchema = yup.object({
 });
 
 export function SignIn() {
-  const { signIn, user } = useContext(AuthContext);
-
-  console.log(user);
+  const { signIn } = useAuth();
 
 
   const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>({

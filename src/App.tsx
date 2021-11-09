@@ -5,7 +5,7 @@ import { Routes } from './routes';
 import GlobalStyle from './styles/global';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './hooks/AuthContext';
 
 
 export function App() {
