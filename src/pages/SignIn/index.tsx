@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
 
 import logoImg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
@@ -29,7 +30,12 @@ export function SignIn() {
   });
   
   const onSubmitForm = useCallback((data: SignInFormData) => {
-    console.log(data)
+    try {
+      toast.success('Login realizado com sucesso');
+
+    } catch (err) {
+      toast.error('Não foi possível realizar o login');
+    }
   }, []);
 
   return (

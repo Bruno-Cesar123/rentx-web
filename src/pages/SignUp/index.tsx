@@ -1,9 +1,11 @@
 import { useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FiArrowLeft } from 'react-icons/fi';
+import { toast } from 'react-toastify';
+
 import logoImg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
 
@@ -30,10 +32,18 @@ const validationSchema = yup.object({
 export function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm<SignUpFormData>({
     resolver: yupResolver(validationSchema)
-  })
+  });
+
+  const navigate = useNavigate();
 
   const onSubmitForm = useCallback((data: SignUpFormData) => {
-    console.log(data)
+    try {
+      toast.success('Cadastro realizado com sucesso');
+
+      navigate('/signin');
+    } catch (err) {
+      toast.error('Não foi possível realizar o cadastro');
+    }
   }, []);
 
   return (
