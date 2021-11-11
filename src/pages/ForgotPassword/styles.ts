@@ -75,4 +75,14 @@ export const Form = styled.form`
       margin-right: 8px;
     }
   }
+
+  @media(max-width: 430px) {
+    padding: 16px;
+
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
 `;
