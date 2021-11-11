@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -28,25 +28,28 @@ const validationSchema = yup.object({
 export function SignIn() {
   const { signIn } = useAuth();
 
-
   const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>({
     resolver: yupResolver(validationSchema)
   });
+
+  const history = useHistory();
   
-  const onSubmitForm = useCallback((data: SignInFormData) => {
+  const onSubmitForm = useCallback(async (data: SignInFormData) => {
     try {
 
-      signIn({
+      await signIn({
         email: data.email,
         password: data.password,
       });
+
+      history.push('/dashboard')
 
       toast.success('Login realizado com sucesso');
 
     } catch (err) {
       toast.error('Não foi possível realizar o login');
     }
-  }, [signIn]);
+  }, [signIn, history]);
 
   return (
     <Container>

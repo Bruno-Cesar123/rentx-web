@@ -1,10 +1,15 @@
 import { createContext, ReactNode, useCallback, useState, useContext } from 'react';
 import { api } from '../services/api';
 
+interface User {
+  name: string;
+  email: string;
+}
+
 interface AuthState {
   token: string;
   refresh_token: string;
-  user: Object;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -13,7 +18,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: Object;
+  user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
 }
@@ -33,6 +38,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const user = localStorage.getItem('@Rentx:user');
 
     if (token && refresh_token && user) {
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       return { token, refresh_token, user: JSON.parse(user) }
     }
 
@@ -50,6 +56,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     localStorage.setItem('@Rentx:token', token);
     localStorage.setItem('@Rentx:refresh_token', refresh_token);
     localStorage.setItem('@Rentx:user', JSON.stringify(user));
+
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     setData({ token, refresh_token, user });
 

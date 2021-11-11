@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -35,7 +35,7 @@ export function SignUp() {
     resolver: yupResolver(validationSchema)
   });
 
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const onSubmitForm = useCallback( async (data: SignUpFormData) => {
     try {
@@ -44,11 +44,11 @@ export function SignUp() {
 
       toast.success('Cadastro realizado com sucesso');
 
-      navigate('/signin');
+      history.push('/signin');
     } catch (err) {
       toast.error('Não foi possível realizar o cadastro');
     }
-  }, []);
+  }, [history]);
 
   return (
     <Container>
