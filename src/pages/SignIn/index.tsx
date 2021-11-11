@@ -78,7 +78,7 @@ export function SignIn() {
         <p>{errors.password?.message}</p>
 
         <div>
-          <Link to="/">Esqueceu a senha?</Link>
+          <Link to="/forgot-password">Esqueceu a senha?</Link>
           <Link to="/signup">Crie sua conta</Link>
         </div>
 
