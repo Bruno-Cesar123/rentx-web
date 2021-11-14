@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -7,6 +9,7 @@ import logoImg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
 
 import { Container, Form } from './styles';
+import { api } from '../../services/api';
 
 interface ResetPasswordFormData {
   password: string;
@@ -28,11 +31,19 @@ export function ResetPassword() {
     resolver: yupResolver(validationSchema)
   });
 
+  const history = useHistory();
+
   const onSubmitForm = useCallback(async (data: ResetPasswordFormData) => {
     try {
-      console.log(data);
+      await api.post('/password/reset', {
+        password: data.password,
+        password_confirmation: data.password_confirmation,
+      });
+
+      history.push('/signin');
+      toast.success('Senha alterada com sucesso');
     } catch(err) {
-      console.log(err);
+      toast.success('Não foi possível alterar sua senha, tente novamente');
     }
   }, []);
 
