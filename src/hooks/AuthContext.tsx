@@ -17,10 +17,15 @@ interface SignInCredentials {
   password: string;
 }
 
+interface ResfreshToken {
+  token: string;
+}
+
 interface AuthContextData {
   user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
+  refreshToken(): void;
 }
 
 interface AuthProviderProps {
@@ -64,6 +69,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     console.log(response.data);
   }, []);
 
+  const refreshToken = useCallback(async () => {
+    const refresh_token_old = localStorage.getItem('@Rentx:refresh_token');
+
+    const response = await api.post('/refresh-token', {
+      refresh_token: refresh_token_old,
+    });
+
+    const { refresh_token, token } = response.data;
+
+    localStorage.setItem('@Rentx:token', token);
+    localStorage.setItem('@Rentx:refresh_token', refresh_token);
+
+  }, []);
+
   const signOut = useCallback(() => {
     localStorage.removeItem('@Rentx:token');
     localStorage.removeItem('@Rentx:refresh_token');
@@ -73,7 +92,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut, refreshToken }}>
       {children}
     </AuthContext.Provider>
   )
