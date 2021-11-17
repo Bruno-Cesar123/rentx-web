@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiUser, FiLogOut } from 'react-icons/fi';
+import { FiUser, FiLogOut, FiSettings } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/AuthContext';
 import { Profile, ContentMenu, Menu } from './styles';
@@ -17,7 +17,7 @@ export function ProfileMenu() {
       {openMenu && (
         <ContentMenu>
           <h3>
-            Nome
+            {user.name}
             <br />
           </h3>
           <ul>
@@ -29,6 +29,12 @@ export function ProfileMenu() {
               <FiLogOut />
               <Link to="/" onClick={signOut}>
                 Logout
+              </Link>
+            </li>
+            <li>
+              <FiSettings />
+              <Link to="/" >
+                Admin
               </Link>
             </li>
           </ul>
