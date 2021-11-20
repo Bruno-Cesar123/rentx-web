@@ -2,7 +2,7 @@ import logoImg from '../../assets/logo.svg';
 import carImg from '../../assets/landing.png';
 
 import { Container, Header, Content, Card, CardSection } from "./styles";
-import { ProfileMenu } from '../../components/Profile';
+import { ProfileMenu } from '../../components/ProfileMenu';
 
 export function Dashboard() {
 

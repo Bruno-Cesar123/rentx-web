@@ -2,8 +2,11 @@ import { createContext, ReactNode, useCallback, useState, useContext } from 'rea
 import { api } from '../services/api';
 
 interface User {
+  id: string;
   name: string;
   email: string;
+  driver_license: string;
+  avatar_url: string;
 }
 
 interface AuthState {
@@ -17,15 +20,14 @@ interface SignInCredentials {
   password: string;
 }
 
-interface ResfreshToken {
-  token: string;
-}
-
 interface AuthContextData {
+  token: string;
+  refresh_token: string;
   user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
   refreshToken(): void;
+  updateUser(user: User): void;
 }
 
 interface AuthProviderProps {
@@ -65,9 +67,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     setData({ token, refresh_token, user });
-
-    console.log(response.data);
   }, []);
+
+  
 
   const refreshToken = useCallback(async () => {
     const refresh_token_old = localStorage.getItem('@Rentx:refresh_token');
@@ -91,8 +93,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setData({} as AuthState);
   }, []);
 
+  const updateUser = useCallback(
+    (user: User) => {
+      localStorage.setItem('@Rentx:user', JSON.stringify(user));
+      
+      setData({
+        token: data.token,
+        refresh_token: data.refresh_token,
+        user,
+      });
+    },
+    [setData, data.token, data.refresh_token]
+  );
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut, refreshToken }}>
+    <AuthContext.Provider value={{
+      token: data.token,
+      refresh_token: data.refresh_token,
+      user: data.user,
+      signIn, 
+      signOut, 
+      refreshToken, 
+      updateUser
+    }}>
       {children}
     </AuthContext.Provider>
   )

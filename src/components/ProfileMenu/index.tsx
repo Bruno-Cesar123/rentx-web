@@ -7,12 +7,12 @@ import { Profile, ContentMenu, Menu } from './styles';
 
 export function ProfileMenu() {
   const { user, signOut } = useAuth();
-  const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <Menu>
       <Profile onClick={() => setOpenMenu(!openMenu)}>
-        <img src="https://github.com/Bruno-Cesar123.png" alt={user.name} />
+        <img src={user.avatar_url} alt={user.name} />
       </Profile>
       {openMenu && (
         <ContentMenu>
