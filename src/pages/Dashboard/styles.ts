@@ -25,62 +25,14 @@ export const Content = styled.section`
   h2 {
     font-size: 28px;
   }
-`;
 
-export const Card = styled.div`
-  margin-top: 70px;
-  width: 384px;
-  height: 440px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background: #FFFFFF;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-
-  img {
-    margin-top: 12px;
-    width: 344px;
-    height: 185px;
-  }
-
-  h3 {
-    font-size: 24px;
-    margin-top: 12px;
-  }
-
-  p {
-    margin-top: 12px;
-  }
-
-  a {
-    margin-top: 12px;
+  div {
     display: flex;
-    align-items: center;
-    justify-content: center;
 
-    width: 220px;
-    height: 45px;
-    background: #FF1010;
-    color: #FFFFFF;
-
-    border-radius: 16px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    cursor: pointer;
-      
-    text-decoration: none;
-      
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.9);
-    }
+    margin-top: 16px;
+    padding: 16px;
+    width: 100%;
+    background: #f2f2f2;
+    border-radius: 24px;
   }
-`;
-
-export const CardSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
 `;
