@@ -35,6 +35,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   form {
     display: flex;
     flex-direction: column;
@@ -43,12 +44,20 @@ export const Content = styled.div`
     width: 600px;
     margin-top: 24px;
     padding: 32px;
-    .avatar {
-      background-color: #404040;
-      margin-bottom: 16px;
+
+    label {
+      margin-top: 12px;
+      font-size: 18px;
     }
-    .form-button {
-      margin-top: 16px;
+
+    input {
+      margin-top: 12px;
+      width: 100%;
+      height: 40px;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      border: solid 1px solid #404040;
     }
   }
 `;

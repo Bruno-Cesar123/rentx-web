@@ -49,6 +49,17 @@ export function Profile() {
             </label>
           </AvatarInput>
 
+          <h1>Meu perfil</h1>
+
+          <label htmlFor="name">Nome:</label>
+          <input type="text" id="name" readOnly value={user.name} />
+
+          <label htmlFor="email">Email:</label>
+          <input type="text" id="email" readOnly value={user.email} />
+
+          <label htmlFor="driver_license">Licença:</label>
+          <input type="text" id="driver_license" readOnly value={user.driver_license} />
+
 
         </form>
       </Content>
