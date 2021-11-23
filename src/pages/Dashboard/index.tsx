@@ -15,9 +15,9 @@ interface RentalsUser {
     id: string;
     name: string;
     description: string;
-    daily_rate: string;
+    daily_rate: number;
     license_plate: string;
-    fine_amount: string;
+    fine_amount: number;
     brand: string;
   }
 }
@@ -50,13 +50,31 @@ export function Dashboard() {
                 <p>Nome: <span>{rentalUser.car.name}</span></p>
                 <p>Marca: <span>{rentalUser.car.brand}</span></p>
                 <p>Descrição: <span>{rentalUser.car.description}</span></p>
-                <p>Diária: <span>{rentalUser.car.fine_amount}</span></p>
-                <p>Multa: <span>{rentalUser.car.daily_rate}</span></p>
+                <p>Diária: <span>
+                  {new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                  }).format(rentalUser.car.daily_rate)}
+                </span></p>
+                <p>Multa: <span>
+                  {new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                  }).format(rentalUser.car.fine_amount)}  
+                </span></p>
               </main>
               <main>
                 <h3>Informações do Gerais</h3>
-                <p>Data de início: <span>{rentalUser.start_date}</span></p>
-                <p>Data de Fim: <span>{rentalUser.end_date}</span></p>
+                <p>Data de início: <span>
+                {new Intl.DateTimeFormat('pt-BR').format(
+                  new Date(rentalUser.start_date)
+                )}  
+                </span></p>
+                <p>Data de Fim: <span>
+                {new Intl.DateTimeFormat('pt-BR').format(
+                  new Date(rentalUser.end_date)
+                )}  
+                </span></p>
                 <p>Total: <span>{rentalUser.total}</span></p>
               </main>
             </div>
