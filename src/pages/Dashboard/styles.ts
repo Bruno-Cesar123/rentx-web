@@ -34,5 +34,12 @@ export const Content = styled.section`
     width: 100%;
     background: #f2f2f2;
     border-radius: 24px;
+
+    main {
+      margin-right: 64px;
+      p {
+        margin-top: 8px;
+      }
+    }
   }
 `;
